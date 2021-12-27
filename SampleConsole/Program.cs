@@ -38,8 +38,8 @@ namespace SampleConsole
             var recovered = shamirss.Join(parts);
             Console.WriteLine($"Recover with all parts -> {Encoding.UTF8.GetString(recovered)}");
             // Recover with minum parts 
-            var recovered3 = shamirss.Join(parts.Take(MINIMUMPARTS).ToDictionary(t=>t.Key,v=>v.Value));
-            Console.WriteLine($"Recover with minium parts -> {Encoding.UTF8.GetString(recovered3)}");
+            var recoveredMinium = shamirss.Join(parts.Take(MINIMUMPARTS).ToDictionary(t=>t.Key,v=>v.Value));
+            Console.WriteLine($"Recover with minium parts -> {Encoding.UTF8.GetString(recoveredMinium)}");
         }
     }
 }
