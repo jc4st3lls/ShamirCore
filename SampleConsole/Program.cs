@@ -22,11 +22,11 @@ namespace SampleConsole
         {
             const string SECRET= "Hello Shamir Secret Share";
             const int NUMPARTS = 5;
-            const int MINIUMPARTS = 3;
+            const int MINIMUMPARTS = 3;
 
             Console.WriteLine($"Secret: {SECRET}");
 
-            var shamirss = new Crypto.ShamirSS(new Crypto.SecureRandom(), NUMPARTS, MINIUMPARTS);
+            var shamirss = new Crypto.ShamirSS(new Crypto.SecureRandom(), NUMPARTS, MINIMUMPARTS);
             var secret = Encoding.UTF8.GetBytes(SECRET);
             ImmutableDictionary<int, byte[]> parts = shamirss.Split(secret);
 
@@ -34,9 +34,11 @@ namespace SampleConsole
             {
                 Console.WriteLine($"Part {part.Key}: [{Convert.ToBase64String(part.Value)}]");
             }
+            // Reccover with all parts
             var recovered = shamirss.Join(parts);
             Console.WriteLine($"Recover with all parts -> {Encoding.UTF8.GetString(recovered)}");
-            var recovered3 = shamirss.Join(parts.Take(MINIUMPARTS).ToDictionary(t=>t.Key,v=>v.Value));
+            // Recover with minum parts 
+            var recovered3 = shamirss.Join(parts.Take(MINIMUMPARTS).ToDictionary(t=>t.Key,v=>v.Value));
             Console.WriteLine($"Recover with minium parts -> {Encoding.UTF8.GetString(recovered3)}");
         }
     }
