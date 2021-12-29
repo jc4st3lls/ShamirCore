@@ -7,3 +7,30 @@ Per entendre-ho millor, imaginem que tenim un document confidencial xifrat amb u
 Si ens parem a pensar una mica. això dins el món del blockchain, on la finalitat entre d’altres, és posar valor al contingut digital, aquest algoritme pot ser de molt ús, de fet ho és (compartir valor).
 Imaginem que, existeix un Sistema de Salut, amb dades de pacients, les quals només és poden visualitzar amb el consentiment de certes parts. Si aquestes dades estan xifrades, i per desxifrar-les és requereix que tots els actors (pacient + metge + sistema) o una part d’ells (pacient + sistema o metge + sistema) estiguin d’”acord”, una manera de controlar aquest accés podria ser amb l’ Schema Shamir. El mateix es pot aplicar a documents confidencials, contrasenyes amb privilegis alts, etc.
 
+Exemple d'us:
+´´´
+        private static void Test1()
+        {
+            const string SECRET= "Hello Shamir Secret Share";
+            const int NUMPARTS = 5;
+            const int MINIMUMPARTS = 3;
+
+            Console.WriteLine($"Secret: {SECRET}");
+
+            var shamirss = new Crypto.ShamirSS(new Crypto.SecureRandom(), NUMPARTS, MINIMUMPARTS);
+            var secret = Encoding.UTF8.GetBytes(SECRET);
+            ImmutableDictionary<int, byte[]> parts = shamirss.Split(secret);
+
+            foreach (var part in parts)
+            {
+                Console.WriteLine($"Part {part.Key}: [{Convert.ToBase64String(part.Value)}]");
+            }
+            // Reccover with all parts
+            var recovered = shamirss.Join(parts);
+            Console.WriteLine($"Recover with all parts -> {Encoding.UTF8.GetString(recovered)}");
+            // Recover with minum parts 
+            var recoveredMinium = shamirss.Join(parts.Take(MINIMUMPARTS).ToDictionary(t=>t.Key,v=>v.Value));
+            Console.WriteLine($"Recover with minium parts -> {Encoding.UTF8.GetString(recoveredMinium)}");
+        }
+```
+
