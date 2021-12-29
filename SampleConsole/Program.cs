@@ -12,8 +12,9 @@ namespace SampleConsole
         {
             Test1();
 
-
+            
             Console.WriteLine("Press any key!!");
+            Console.WriteLine("\n\n\t\t\t\t\t\tBy @jc4st3lls");
             Console.ReadLine();
 
         }
@@ -32,7 +33,9 @@ namespace SampleConsole
 
             foreach (var part in parts)
             {
-                Console.WriteLine($"Part {part.Key}: [{Convert.ToBase64String(part.Value)}]");
+                // Print parts b64 and Hex formats
+                Console.WriteLine($"Part {part.Key}: b64 [{Convert.ToBase64String(part.Value)}] " +
+                    $"Hex:[{BitConverter.ToString(part.Value).Replace("-",string.Empty)}]");
             }
             // Reccover with all parts
             var recovered = shamirss.Join(parts);
