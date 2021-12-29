@@ -37,7 +37,9 @@ Exemple d'us:
 Referències:
 
 [https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing](https://en.wikipedia.org/wiki/Shamirs_Secret_Sharing).
+
 [https://github.com/blockchain/](https://github.com/blockchain/).
+
 [https://github.com/blockchain/shamir](https://github.com/blockchain/shamir).
 
 
