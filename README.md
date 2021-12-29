@@ -1,5 +1,5 @@
 # ShamirCore
-Shamir Secrets implements in Net Core 3.1
+Shamir Secrets Shared implements in Net Core 3.1
 
 Resumint molt, aquest algoritme criptogràfic ens permet compartir un secret entre un número d’actors, i establir un mínim d’aquests per recuperar-lo o reconstruir-lo.
 
@@ -33,4 +33,7 @@ Exemple d'us:
             Console.WriteLine($"Recover with minium parts -> {Encoding.UTF8.GetString(recoveredMinium)}");
         }
 ```
+
+Referències:
+
 
