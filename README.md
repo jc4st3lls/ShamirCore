@@ -43,3 +43,5 @@ Referències:
 [https://github.com/blockchain/shamir](https://github.com/blockchain/shamir).
 
 
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/jcastellsgH)
+
